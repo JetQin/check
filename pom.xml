@@ -40,13 +40,13 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://git@github.com:SKTLab/ProjectManagement.git</connection>
-		<developerConnection>scm:git:git://git@github.com:SKTLab/ProjectManagement.git</developerConnection>
-		<url>https://github.com/SKTLab/ProjectManagement.git</url>
+		<connection>scm:git:git://git@github.com:JetQin/check.git</connection>
+		<developerConnection>scm:git:git://git@github.com:JetQin/check.git</developerConnection>
+		<url>https://github.com/JetQin/check.git</url>
 	</scm>
 
 	<issueManagement>
-		<url>https://github.com/SKTLab/ProjectManagement/issues</url>
+		<url>https://github.com/JetQin/check/issues</url>
 		<system>GitHub Issues</system>
 	</issueManagement>
 
@@ -61,6 +61,51 @@
 						<source>${java.version}</source>
 						<target>${java.version}</target>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${maven.maven-checkstyle-plugin.version}</version>
+					<configuration>
+						<configLocation>${basedir}/src/config/jetq_checkstyle.xml</configLocation> 
+					</configuration>
+					<executions>
+		                <execution>
+		                    <id>checkstyle</id>
+		                    <phase>validate</phase>
+		                    <goals>
+		                        <goal>check</goal>
+		                    </goals>
+		                    <configuration>
+		                        <failOnViolation>true</failOnViolation>
+		                    </configuration>
+		                </execution>
+		            </executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${maven.maven-pmd-plugin.version}</version>
+					<configuration>
+						<linkXref>true</linkXref>
+						<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+						<minimumTokens>100</minimumTokens>
+						<targetJdk>${java.version}</targetJdk>
+					</configuration>
+					<executions>
+						<execution>
+							<id>pmd</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+							<configuration>
+								<rulesets>
+									<ruleset>${basedir}/src/config/jetq_pmd.xml</ruleset>
+								</rulesets>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -136,7 +181,7 @@
 				<reportSets>
 					<reportSet>
 						<reports>
-							<report>dependencies</report>
+							<!-- <report>dependencies</report> -->
 							<report>project-team</report>
 							<report>mailing-list</report>
 							<report>issue-tracking</report>
@@ -149,7 +194,7 @@
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${maven.maven-checkstyle-plugin.version}</version>
 				<configuration>
-					<configLocation>${basedir}/src/config/custom_checkstyle.xml</configLocation>
+					<configLocation>${basedir}/src/config/jetq_checkstyle.xml</configLocation>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -195,12 +240,6 @@
 			<name>JBoss Repository</name>
 			<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
 		</repository>
-
-		<repository>
-			<id>codelds</id>
-			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
-		</repository>
-
 	</repositories>
 
   <dependencies>
