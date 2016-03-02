@@ -31,9 +31,9 @@
     <property name="fileExtensions" value="java, properties, xml"/>
 
     <!--  检验没一行不能出现\t   -->
-    <module name="FileTabCharacter">
+  <!--   <module name="FileTabCharacter">
         <property name="eachLine" value="true"/>
-    </module>
+    </module> -->
 
     <module name="TreeWalker">
     	<!-- block 结构检验规则 -->
@@ -68,13 +68,8 @@
 					    public long getId() { return id; }
 				 -->
 				 <property name="option" value="alone_or_singleline"/>
+				   <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO, STATIC_INIT, INSTANCE_INIT"/>
 			</module>
-			<!--  
-	        <module name="RightCurly">
-	            <property name="option" value="alone"/>
-	            <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO, STATIC_INIT, INSTANCE_INIT"/>
-	        </module>
-	        －>
 	        
 	        <!-- 检验空catch 块,catch 块中出现的变量与参数名一致 -->
 	         <module name="EmptyCatchBlock">
