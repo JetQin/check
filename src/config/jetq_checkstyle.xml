@@ -28,19 +28,21 @@
 	 -->
     <property name="severity" value="warning"/>
 
-    <property name="fileExtensions" value="java, properties, xml"/>
+	<property name="fileExtensions" value="java, properties, xml"/>
 
     <!--  检验没一行不能出现\t   -->
-  <!--   <module name="FileTabCharacter">
-        <property name="eachLine" value="true"/>
-    </module> -->
+    <module name="FileTabCharacter">
+    	<property name="eachLine" value="true"/>
+    </module>
+    
+    <module name="FileLength">
+		<property name="max" value="1500"/>
+	</module>
 
     <module name="TreeWalker">
     	<!-- block 结构检验规则 -->
 	    	<!-- if else for while do case 需要括号 -->
-	    	<module name="NeedBraces">
-	    		<property name="allowEmptyLoopBody" value="false"/>
-	    	</module>
+	    	<module name="NeedBraces"/>
 	    	<!-- 
 	    		switch (num) {
 				    case 1: counter++; break; // ERROR
@@ -67,14 +69,16 @@
 					    // Single-line format of block
 					    public long getId() { return id; }
 				 -->
-				 <property name="option" value="alone_or_singleline"/>
-				   <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO, STATIC_INIT, INSTANCE_INIT"/>
+				 <property name="option" value="alone"/>
+				 <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO, STATIC_INIT, INSTANCE_INIT"/>
 			</module>
 	        
 	        <!-- 检验空catch 块,catch 块中出现的变量与参数名一致 -->
-	         <module name="EmptyCatchBlock">
+	        <!--  
+	        <module name="EmptyCatchBlock">
 	            <property name="exceptionVariableName" value="expected"/>
 	        </module>
+	        -->
 	        
 	         <module name="EmptyBlock">
 	            <property name="option" value="TEXT"/>
@@ -83,6 +87,7 @@
         <!-- block 结构检验规则 -->
         
         <!-- 注解用于class,interface,enum,method,同一行允许多个注解  -->
+        <!--  
 	        <module name="AnnotationLocation">
 	            <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF"/>
 	        </module>
@@ -90,7 +95,7 @@
 	            <property name="tokens" value="VARIABLE_DEF"/>
 	            <property name="allowSamelineMultipleAnnotations" value="true"/>
 	        </module>
-        
+        -->
         <!-- 关于class的check规则 -->
         
         	<module name="OneTopLevelClass"/>
@@ -273,7 +278,7 @@
 			   <module name="CustomImportOrder">
 		       <!--     <property name="specialImportsRegExp" value="com.g360"/> -->
 		           <property name="sortImportsInGroupAlphabetically" value="true"/>
-		           <property name="customImportOrderRules" value="STATIC###SAME_PACKAGE###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE###STANDARD_JAVA_PACKAGE"/>
+		           <property name="customImportOrderRules" value="STATIC###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE###STANDARD_JAVA_PACKAGE"/>
 		       </module>
 			   <module name="UnusedImports"/>
 			   
@@ -426,11 +431,12 @@
 
         <!-- Size Violations check规则-->
         
-        	<module name="FileLength">
+        	<!-- <module name="FileLength">
 			      <property name="max" value="1500"/>
-			</module>
+			</module> -->
 			
-			  <!-- 每行不超过120个字符 -->
+			
+			<!-- 每行不超过120个字符 -->
 	        <module name="LineLength">
 	            <property name="max" value="120"/>
 	            <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>

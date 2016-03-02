@@ -23,7 +23,7 @@
 		<maven.maven-surefire-plugin.version>2.18</maven.maven-surefire-plugin.version>
 		<maven.maven-project-info-reports-plugin.version>2.7</maven.maven-project-info-reports-plugin.version>
 		<maven.maven-site-plugin.version>3.3</maven.maven-site-plugin.version>
-		<maven.maven-checkstyle-plugin.version>2.13</maven.maven-checkstyle-plugin.version>
+		<maven.maven-checkstyle-plugin.version>2.17</maven.maven-checkstyle-plugin.version>
 		<maven.maven-pmd-plugin.version>3.3</maven.maven-pmd-plugin.version>
 		<maven.maven-jxr-plugin.version>2.3</maven.maven-jxr-plugin.version>
 		<maven.maven-scm-plugin.version>1.7</maven.maven-scm-plugin.version>
