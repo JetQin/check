@@ -110,7 +110,7 @@
 						<minimumTokens>100</minimumTokens>
 						<targetJdk>${java.version}</targetJdk>
 						<rulesets>
-							<ruleset>${basedir}/src/config/_pmd.xml</ruleset>
+							<ruleset>${basedir}/src/config/jetq_pmd.xml</ruleset>
 						</rulesets>
 					</configuration>
 					<executions>
@@ -284,7 +284,7 @@
 					<minimumTokens>100</minimumTokens>
 					<targetJdk>${java.version}</targetJdk>
 					<rulesets>
-						<ruleset>${basedir}/src/config/_pmd.xml</ruleset>
+						<ruleset>${basedir}/src/config/jetq_pmd.xml</ruleset>
 					</rulesets>
 				</configuration>
 			</plugin>

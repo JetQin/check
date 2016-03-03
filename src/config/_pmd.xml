@@ -49,7 +49,6 @@ xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd"
    <rule ref="rulesets/design.xml/CyclomaticComplexity"/>
    <!--代码复杂度小于10，函数入口为1 'if', 'while', 'for', and 'case labels'. 每个决策点＋1-->
    <rule ref="rulesets/design.xml/TooManyFields"/>
-
    <rule ref="rulesets/design.xml/UnnecessaryConstructor"/>
    <rule ref="rulesets/design.xml/NullAssignment"/>
    <rule ref="rulesets/design.xml/OnlyOneReturn"/>

@@ -43,28 +43,26 @@ xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd"
    <rule ref="rulesets/java/basic.xml/DontCallThreadRun"/>
    
    <!-- codesize check rules-->
-   <rule ref="rulesets/java/design.xml/NPathComplexity"/>
-   <rule ref="rulesets/java/design.xml/ExcessiveMethodLength"/>
-   <rule ref="rulesets/java/design.xml/ExcessiveParameterList"/>
-   <rule ref="rulesets/java/design.xml/CyclomaticComplexity"/>
+   <rule ref="rulesets/java/codesize.xml/NPathComplexity"/> 
+   <rule ref="rulesets/java/codesize.xml/ExcessiveMethodLength"/>
+   <rule ref="rulesets/java/codesize.xml/ExcessiveParameterList"/>
+   <rule ref="rulesets/java/codesize.xml/CyclomaticComplexity"/> 
    <!--代码复杂度小于10，函数入口为1 'if', 'while', 'for', and 'case labels'. 每个决策点＋1-->
-   <rule ref="rulesets/java/design.xml/TooManyFields">
-        <property name="maxfields" value="20"></property>
-   </rule>
-   <rule ref="rulesets/java/design.xml/UnnecessaryConstructor"/>
-   <rule ref="rulesets/java/design.xml/NullAssignment"/>
-   <rule ref="rulesets/java/design.xml/OnlyOneReturn"/>
-   <rule ref="rulesets/java/design.xml/UnusedModifier"/>
-   <rule ref="rulesets/java/design.xml/AssignmentInOperand"/>
-   <rule ref="rulesets/java/design.xml/DontImportSun"/>
-   <rule ref="rulesets/java/design.xml/SuspiciousOctalEscape"/>
-   <rule ref="rulesets/java/design.xml/UnnecessaryParentheses"/>
-   <rule ref="rulesets/java/design.xml/DefaultPackage"/>
-   <rule ref="rulesets/java/design.xml/BooleanInversion"/>
-   <rule ref="rulesets/java/design.xml/AvoidUsingShortType"/>
-   <rule ref="rulesets/java/design.xml/AvoidLiteralsInIfCondition"/>
-   <rule ref="rulesets/java/design.xml/UseConcurrentHashMap"/>
-   <rule ref="rulesets/java/design.xml/AvoidUsingShortType"/>
+   <rule ref="rulesets/java/codesize.xml/TooManyFields"/>
+   
+   <rule ref="rulesets/java/controversial.xml/UnnecessaryConstructor"/>
+   <rule ref="rulesets/java/controversial.xml/NullAssignment"/>
+   <rule ref="rulesets/java/controversial.xml/OnlyOneReturn"/>
+   <rule ref="rulesets/java/controversial.xml/AssignmentInOperand"/>
+   <rule ref="rulesets/java/controversial.xml/DontImportSun"/>
+   <rule ref="rulesets/java/controversial.xml/SuspiciousOctalEscape"/>
+   <rule ref="rulesets/java/controversial.xml/UnnecessaryParentheses"/>
+   <rule ref="rulesets/java/controversial.xml/DefaultPackage"/>
+   <rule ref="rulesets/java/controversial.xml/BooleanInversion"/>
+   <rule ref="rulesets/java/controversial.xml/AvoidUsingShortType"/>
+   <rule ref="rulesets/java/controversial.xml/AvoidLiteralsInIfCondition"/>
+   <rule ref="rulesets/java/controversial.xml/UseConcurrentHashMap"/>
+   <rule ref="rulesets/java/controversial.xml/AvoidUsingShortType"/>
    
    <!--文件，数据库连接必须关闭-->
    <rule ref="rulesets/java/design.xml/CloseResource"/>
