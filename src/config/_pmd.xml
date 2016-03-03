@@ -38,31 +38,29 @@ xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd"
    <rule ref="rulesets/basic.xml/BrokenNullCheck"/>
    <rule ref="rulesets/basic.xml/BigIntegerInstantiation"/>
    <rule ref="rulesets/basic.xml/AvoidUsingOctalValues"/>
-   <rule ref="rulesets/basic.xml/AvoidUsingHardCodedIP"/>
+   <rule ref="rulesets/basic.xml/AvoidUsingHardCodedIP"/> 
    <rule ref="rulesets/basic.xml/AvoidMultipleUnaryOperators"/>
-   <rule ref="rulesets/basic.xml/DontCallThreadRun"/>
+   <!-- <rule ref="rulesets/basic.xml/DontCallThreadRun"/>  -->
    
-   <!-- codesize check rules-->
-   <rule ref="rulesets/design.xml/NPathComplexity"/>
-   <rule ref="rulesets/design.xml/ExcessiveMethodLength"/>
-   <rule ref="rulesets/design.xml/ExcessiveParameterList"/>
-   <rule ref="rulesets/design.xml/CyclomaticComplexity"/>
-   <!--代码复杂度小于10，函数入口为1 'if', 'while', 'for', and 'case labels'. 每个决策点＋1-->
-   <rule ref="rulesets/design.xml/TooManyFields"/>
-   <rule ref="rulesets/design.xml/UnnecessaryConstructor"/>
-   <rule ref="rulesets/design.xml/NullAssignment"/>
-   <rule ref="rulesets/design.xml/OnlyOneReturn"/>
-   <rule ref="rulesets/design.xml/UnusedModifier"/>
-   <rule ref="rulesets/design.xml/AssignmentInOperand"/>
-   <rule ref="rulesets/design.xml/DontImportSun"/>
-   <rule ref="rulesets/design.xml/SuspiciousOctalEscape"/>
-   <rule ref="rulesets/design.xml/UnnecessaryParentheses"/>
-   <rule ref="rulesets/design.xml/DefaultPackage"/>
-   <rule ref="rulesets/design.xml/BooleanInversion"/>
-   <rule ref="rulesets/design.xml/AvoidUsingShortType"/>
-   <rule ref="rulesets/design.xml/AvoidLiteralsInIfCondition"/>
-   <rule ref="rulesets/design.xml/UseConcurrentHashMap"/>
-   <rule ref="rulesets/design.xml/AvoidUsingShortType"/>
+   <rule ref="rulesets/codesize.xml/NPathComplexity"/> 
+   <rule ref="rulesets/codesize.xml/ExcessiveMethodLength"/>
+   <rule ref="rulesets/codesize.xml/ExcessiveParameterList"/>
+   <rule ref="rulesets/codesize.xml/CyclomaticComplexity"/> 
+   <rule ref="rulesets/codesize.xml/TooManyFields"/>
+   
+   <rule ref="rulesets/controversial.xml/UnnecessaryConstructor"/>
+   <rule ref="rulesets/controversial.xml/NullAssignment"/>
+   <rule ref="rulesets/controversial.xml/OnlyOneReturn"/>
+   <rule ref="rulesets/controversial.xml/AssignmentInOperand"/>
+   <rule ref="rulesets/controversial.xml/DontImportSun"/>
+   <rule ref="rulesets/controversial.xml/SuspiciousOctalEscape"/>
+   <rule ref="rulesets/controversial.xml/UnnecessaryParentheses"/>
+   <rule ref="rulesets/controversial.xml/DefaultPackage"/>
+   <rule ref="rulesets/controversial.xml/BooleanInversion"/>
+   <rule ref="rulesets/controversial.xml/AvoidUsingShortType"/>
+<!--    <rule ref="rulesets/java/controversial.xml/AvoidLiteralsInIfCondition"/> -->
+<!--    <rule ref="rulesets/controversial.xml/UseConcurrentHashMap"/>   -->
+<!--    <rule ref="rulesets/controversial.xml/AvoidUsingShortType"/> -->
    
    <!--文件，数据库连接必须关闭-->
    <rule ref="rulesets/design.xml/CloseResource"/>
@@ -88,19 +86,16 @@ xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd"
    <rule ref="rulesets/design.xml/SingularField"/>
    <rule ref="rulesets/design.xml/ReturnEmptyArrayRatherThanNull"/>
    
-   <!-- Coupling check rules-->
    <rule ref="rulesets/coupling.xml/CouplingBetweenObjects"/>
    <rule ref="rulesets/coupling.xml/ExcessiveImports"/>
    <rule ref="rulesets/coupling.xml/LooseCoupling"/>
    
-   <!-- Import check rules-->
    <rule ref="rulesets/imports.xml/DuplicateImports"/>
    <rule ref="rulesets/imports.xml/DontImportJavaLang"/>
    <rule ref="rulesets/imports.xml/UnusedImports"/>
    <rule ref="rulesets/imports.xml/ImportFromSamePackage"/>
    <rule ref="rulesets/imports.xml/TooManyStaticImports"/>
   
-   <!-- Migration check rules-->
    <rule ref="rulesets/migrating.xml/ReplaceVectorWithList"/>
    <rule ref="rulesets/migrating.xml/ReplaceHashtableWithMap"/>
    <rule ref="rulesets/migrating.xml/ReplaceEnumerationWithIterator"/>
