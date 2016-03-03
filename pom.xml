@@ -23,8 +23,10 @@
 		<maven.maven-surefire-plugin.version>2.18</maven.maven-surefire-plugin.version>
 		<maven.maven-project-info-reports-plugin.version>2.7</maven.maven-project-info-reports-plugin.version>
 		<maven.maven-site-plugin.version>3.3</maven.maven-site-plugin.version>
+		<maven.maven-findbugs-plugin.version>3.0.1</maven.maven-findbugs-plugin.version>
 		<maven.maven-checkstyle-plugin.version>2.17</maven.maven-checkstyle-plugin.version>
-		<maven.maven-pmd-plugin.version>3.3</maven.maven-pmd-plugin.version>
+		<maven.maven-pmd-plugin.version>3.6</maven.maven-pmd-plugin.version>
+		<maven.cargo-maven2-plugin.version>3.6</maven.cargo-maven2-plugin.version>
 		<maven.maven-jxr-plugin.version>2.3</maven.maven-jxr-plugin.version>
 		<maven.maven-scm-plugin.version>1.7</maven.maven-scm-plugin.version>
 		<maven.cobertura-maven-plugin.version>2.2</maven.cobertura-maven-plugin.version>
@@ -50,6 +52,22 @@
 		<system>GitHub Issues</system>
 	</issueManagement>
 
+	<profiles>
+      <profile>
+          <id>local</id>
+          <properties>
+              <env>local</env>
+              <tomca.user>admin</tomca.user>
+              <tomcat.password>admin</tomcat.password>
+              <tomcat.host>192.168.1.114</tomcat.host>
+              <tomcat.port>8080</tomcat.port>
+          </properties>  
+          <activation>
+              <activeByDefault>true</activeByDefault>
+          </activation>
+      </profile>
+	</profiles>
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -67,7 +85,7 @@
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>${maven.maven-checkstyle-plugin.version}</version>
 					<configuration>
-						<configLocation>${basedir}/src/config/jetq_checkstyle.xml</configLocation> 
+						<configLocation>${basedir}/src/config/jetq_checkstyle.xml</configLocation>
 					</configuration>
 					<executions>
 		                <execution>
@@ -91,6 +109,9 @@
 						<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
 						<minimumTokens>100</minimumTokens>
 						<targetJdk>${java.version}</targetJdk>
+						<rulesets>
+							<ruleset>${basedir}/src/config/_pmd.xml</ruleset>
+						</rulesets>
 					</configuration>
 					<executions>
 						<execution>
@@ -99,25 +120,20 @@
 							<goals>
 								<goal>check</goal>
 							</goals>
-							<configuration>
-								<rulesets>
-									<ruleset>${basedir}/src/config/jetq_pmd.xml</ruleset>
-								</rulesets>
-							</configuration>
 						</execution>
 					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
               		<artifactId>findbugs-maven-plugin</artifactId>
-             	    <version>2.3.2</version>
+             	    <version>${maven.maven-findbugs-plugin.version}</version>
               		<configuration>
                         <!-- <configLocation>${basedir}/springside-findbugs.xml</configLocation> -->
-                        <!--  <configLocation>${basedir}/config/jetq_findbugs.xml</configLocation> -->
-                  		<!-- findbugs xml输出--> 
-                  		<findbugsXmlOutput>true</findbugsXmlOutput>
-                   		<!-- findbugs xml输出路径-->         
-                   		<findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
+                        <configLocation>${basedir}/config/jetq_findbugs.xml</configLocation>
+                  		<!-- findbugs xml输出-->
+                  		<xmlOutput>true</xmlOutput>
+                   		<!-- findbugs xml输出路径-->
+                   		<xmlOutputDirectory>target/site</xmlOutputDirectory>
 	                </configuration>
 	                <executions>
 	                	<execution>
@@ -145,6 +161,45 @@
 						<connectionType>connection</connectionType>
 					</configuration>
 				</plugin>
+				<!--  cargo for automatically remote depoly
+				referenced : https://codehaus-cargo.github.io/cargo/Tomcat+8.x.html
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+				    <artifactId>cargo-maven2-plugin</artifactId>
+				    <version>${maven.cargo-maven2-plugin.version}</version>
+				    <configuration>
+				        <container>
+				            <containerId>jboss42x</containerId>
+				            <home>/home/jboss/jboss-4.2.0.GA</home>
+				            <type>remote</type>
+				        </container>
+				        <configuration>
+				            <type>runtime</type>
+				            <properties>
+				                <cargo.protocol>http</cargo.protocol>
+				                <cargo.hostname>${tomcat.host}</cargo.hostname>
+				                <cargo.servlet.port>${tomcat.port}</cargo.servlet.port>
+				                <cargo.remote.username>${tomcat.user}</cargo.remote.username>
+				                <cargo.remote.password>${tomcat.password}</cargo.remote.password>
+				            </properties>
+				        </configuration> 
+				        <deployer>
+					        <type>remote</type>
+					    </deployer>
+					
+					    <deployables>
+					        <deployable>
+					          <groupId>com.github.jetqin</groupId>
+					          <artifactId>check</artifactId>
+					          <type>war</type>
+					          <properties>
+					            <context>/rdm</context>
+					          </properties>
+					        </deployable>
+					    </deployables> 
+				     </configuration>         
+				</plugin>
+				 -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
@@ -228,7 +283,23 @@
 					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
 					<minimumTokens>100</minimumTokens>
 					<targetJdk>${java.version}</targetJdk>
+					<rulesets>
+						<ruleset>${basedir}/src/config/_pmd.xml</ruleset>
+					</rulesets>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+           		<artifactId>findbugs-maven-plugin</artifactId>
+           	    <version>${maven.maven-findbugs-plugin.version}</version>
+                <configuration>
+                    <!-- <configLocation>${basedir}/springside-findbugs.xml</configLocation> -->
+                    <configLocation>${basedir}/config/jetq_findbugs.xml</configLocation>
+              		<!-- findbugs xml输出-->
+              		<xmlOutput>true</xmlOutput>
+               		<!-- findbugs xml输出路径-->
+               		<xmlOutputDirectory>target/site</xmlOutputDirectory>
+                </configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -265,6 +336,12 @@
 	</repositories>
 
   <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

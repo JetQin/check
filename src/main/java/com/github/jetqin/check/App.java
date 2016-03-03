@@ -1,5 +1,6 @@
 package com.github.jetqin.check;
 
+import java.io.File;
 import java.lang.annotation.Target;
 import java.util.*;
 
@@ -13,18 +14,18 @@ import javax.annotation.Resource;
 @Resource
 public class App
 {
-  public static final  String asssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss = "123";
+  public static final String asssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss = "123";
 
   public String              nameConvertionParameter;
 
-  public static void main(String[] args)
+  public static void main (String[] args)
   {
     System.out.println("Hello World!");
   }
 
   @Deprecated
   @Resource
-  public void test()
+  public void test ( )
   {
     // int as ;
 
@@ -33,12 +34,26 @@ public class App
       System.out.println("Hello");
     index++;
 
+    String test = null;
+    
+    if(test.equals("asdf"))
+    {
+      
+    }
+    
+    try{
+      File s = new File("a");
+    }
+    catch(Exception ex)
+    {
+      
+    }
   }
 
   /*
- * 
- */
-  public void testApp()
+  * 
+  */
+  public void testApp ( )
   {
     int key = 2;
     switch (key)
