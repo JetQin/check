@@ -1,35 +1,22 @@
 package com.github.jetqin.check;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest extends TestCase
+public class AppTest 
 {
-  /**
-   * Create the test case
-   *
-   * @param testName
-   *          name of the test case
-   */
-  public AppTest(String testName)
+
+  
+  @Test
+  public void testAddMethod()
   {
-    super(testName);
+    int first = Integer.valueOf(5);
+    int second = Integer.valueOf(6);
+    assertEquals(11, first+second);
   }
-
-  /**
-   * @return the suite of tests being tested
-   */
-  public static Test suite ()
-  {
-    return new TestSuite(AppTest.class);
-  }
-
-  /**
-   * Rigourous Test :-)
-   */
-
+  
 }
