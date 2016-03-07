@@ -6,6 +6,7 @@
  * Copyright (c) 2016, jianlei.qin@sktlab.com All Rights Reserved. 
  * 
  */
+
 package com.github.jetqin.check;
 
 /**
