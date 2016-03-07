@@ -10,20 +10,20 @@ public class App
 
   public String              nameParameter;
 
-  public static void main (final String[] args)
+  public static void main ( final String[] args )
   {
     System.out.println("Hello World!");
   }
 
-  // public void test ( )
-  // {
-  // int as ;
+  public void test ( )
+  {
+    int as;
 
-  // int index = 5;
-  // while (index < 10)
-  // System.out.println("Hello");
-  // index++;
-  // }
+    int index = 5;
+    while (index < 10)
+      System.out.println("Hello");
+    index++;
+  }
 
   /*
   * 

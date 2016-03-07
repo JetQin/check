@@ -273,7 +273,7 @@
         <!-- import check规则-->
 			   <module name="AvoidStarImport"/>
 			   <!-- 避免import时，使用.* -->
-			   <module name="AvoidStaticImport"/>
+			<!--    <module name="AvoidStaticImport"/> -->
 			   
 			   <module name="CustomImportOrder">
 		       <!--     <property name="specialImportsRegExp" value="com.g360"/> -->
